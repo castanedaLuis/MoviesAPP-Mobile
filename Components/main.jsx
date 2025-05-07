@@ -11,7 +11,7 @@ const optionsHeaders = {
     headers: {
         'Content-type': 'application/json',
         'accept': 'application/json',
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMGFkNjNlOTM1YmRkMThiOTg3ZTZkOGM3ZGZhZjlhMiIsIm5iZiI6MTYzNjY5MzU4NS42NzUsInN1YiI6IjYxOGRmNjUxMjBlNmE1MDA5MThkNjgyMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.P1e1hip1zJOZilusm2V7bus4ZEndVPaA4U40UCFEXMU'
+        'Authorization': `Bearer ${Constants.expoConfig.extra.token}`,
     }
 }
 
