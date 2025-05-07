@@ -2,6 +2,16 @@ import { useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, Image, Animated } from 'react-native';
 
 export function MovieCard({ movie }) {
+    const getColor = (vote) => {
+        if (vote >= 7) {
+            return '#00FF00'; // Green
+        } else if (vote >= 5) {
+            return '#FFFF00'; // Yellow
+        } else {
+            return '#FF0000'; // Red
+        }
+    }
+    const color = getColor(movie.vote_average);
     return (
         <View
             className="flex-row bg-slate-500/100 rounded-lg p-2 w-28 h-52 shadow-lg"
@@ -12,8 +22,10 @@ export function MovieCard({ movie }) {
                 style={styles.movieImage}
             />
             <View style={styles.movieInfo}>
+
                 <Text className="mb-6" style={styles.movieTitle}>{movie.title}</Text>
-                <Text className="text-sm text-white" style={styles.movieDescription}>{movie.overview}</Text>
+                <Text className="mb-6" style={{ color: color }}>{movie.vote_average}</Text>
+                <Text className="text-sm text-white" style={styles.movieDescription} >{movie.overview}</Text>
             </View>
         </View>
     )
@@ -38,30 +50,27 @@ export function AmimatedCardMovie({ movie, index }) {
 }
 const styles = StyleSheet.create({
     movieContainer: {
-        margin: 10,
-        alignItems: 'center',
-        display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'center',
+        alignItems: 'flex-start',
         backgroundColor: '#1c1c1c',
         borderRadius: 10,
         gap: 10,
+        marginBottom: 10,
+        padding: 10,
     },
     movieInfo: {
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        gap: 5,
+        overflow: 'hidden',
     },
     movieTitle: {
         color: '#fff',
         fontSize: 18,
-        marginBottom: 5,
     },
     movieDescription: {
         color: '#fff',
         fontSize: 12,
-        marginBottom: 5,
-        flexShrink: 1,
     },
     movieImage: {
         width: 107,

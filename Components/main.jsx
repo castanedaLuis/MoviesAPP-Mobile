@@ -48,7 +48,6 @@ export function Main() {
                             renderItem={({ item }) => (
                                 <AmimatedCardMovie movie={item} index={item.id} />
                             )}
-                            onEndReachedThreshold={0.5}
                         />
                     </>
                 )
