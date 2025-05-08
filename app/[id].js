@@ -33,7 +33,6 @@ export default function DetailsMovie() {
         }
 
     }, [id])
-    console.log(infoMovie);
 
     return (
         <ScreenLayout>

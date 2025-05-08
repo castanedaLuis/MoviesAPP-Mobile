@@ -1,5 +1,5 @@
 import { ScrollView, Text } from "react-native"
-import { ScreenLayout } from "../Components/ScreenLayout"
+import { ScreenLayout } from "../../Components/ScreenLayout"
 
 function About() {
     return (
