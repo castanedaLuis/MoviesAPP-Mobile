@@ -35,19 +35,12 @@ export function Main() {
     },);
 
     return (
-        <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
-            <Text style={{ color: '#fff', fontSize: 24, marginBottom: 20 }}>Popular Movies</Text>
-            <Link href="/about" >
-                <Pressable>
-                    <InfoIcon color='white' size={24} />
-                </Pressable>
-            </Link>
+        <View style={{ backgroundColor: '#000' }}>
             {
                 moviesAPI.length === 0 ? (
                     <ActivityIndicator size="large" color="#fff" />
                 ) : (
                     <>
-                        <Text style={{ color: '#fff', fontSize: 16 }}>Total Movies: {moviesAPI.length}</Text>
                         <FlatList
                             data={moviesAPI}
                             key={item => item.id}

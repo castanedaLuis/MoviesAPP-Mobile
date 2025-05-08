@@ -1,5 +1,9 @@
 import { useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, Image, Animated } from 'react-native';
+import { StyleSheet, Text, View, Image, Animated, Pressable } from 'react-native';
+import { Link } from 'expo-router';
+import { styled } from 'nativewind';
+
+const StyledPressable = styled(Pressable);
 
 export function MovieCard({ movie }) {
     const getColor = (vote) => {
@@ -13,21 +17,25 @@ export function MovieCard({ movie }) {
     }
     const color = getColor(movie.vote_average);
     return (
-        <View
-            className="flex-row bg-slate-500/100 rounded-lg p-2 w-28 h-52 shadow-lg"
-            style={styles.movieContainer}
-        >
-            <Image
-                source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }}
-                style={styles.movieImage}
-            />
-            <View style={styles.movieInfo}>
+        <Link href={`/${movie.id}`} asChild>
+            <StyledPressable style={styles.stylePresable}>
+                <View
+                    className="flex-row bg-slate-500/100 rounded-lg p-2 w-28 h-52 shadow-lg"
+                    style={styles.movieContainer}
+                >
+                    <Image
+                        source={{ uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}` }}
+                        style={styles.movieImage}
+                    />
+                    <View style={styles.movieInfo}>
 
-                <Text className="mb-6" style={styles.movieTitle}>{movie.title}</Text>
-                <Text className="mb-6" style={{ color: color }}>{movie.vote_average}</Text>
-                <Text className="text-sm text-white" style={styles.movieDescription} >{movie.overview}</Text>
-            </View>
-        </View>
+                        <Text className="mb-6" style={styles.movieTitle}>{movie.title}</Text>
+                        <Text className="mb-6" style={{ color: color }}>{movie.vote_average}</Text>
+                        <Text className="text-sm text-white" style={styles.movieDescription} >{movie.overview}</Text>
+                    </View>
+                </View>
+            </StyledPressable>
+        </Link>
     )
 }
 
@@ -49,7 +57,7 @@ export function AmimatedCardMovie({ movie, index }) {
     );
 }
 const styles = StyleSheet.create({
-    movieContainer: {
+    stylePresable: {
         flexDirection: 'row',
         alignItems: 'flex-start',
         backgroundColor: '#1c1c1c',
@@ -57,12 +65,19 @@ const styles = StyleSheet.create({
         gap: 10,
         marginBottom: 10,
         padding: 10,
+        activeOpacity: 0.7,
+    },
+    movieContainer: {
+        flexDirection: 'row',
+        gap: 10,
+
     },
     movieInfo: {
         display: 'flex',
         flexDirection: 'column',
         gap: 5,
         overflow: 'hidden',
+        flexShrink: 1,
     },
     movieTitle: {
         color: '#fff',
