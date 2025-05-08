@@ -1,15 +1,13 @@
 import Constants from 'expo-constants';
-import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable } from 'react-native';
+import { StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useEffect, useState } from 'react';
 import { fetchingData } from '../lib/movies'
 import { AmimatedCardMovie } from './MovieCard';
-import { Link } from 'expo-router';
-import { InfoIcon } from './Icons';
 
 const urlMovies = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=';
-//const searchMovies = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=';
-const optionsHeaders = {
+export const searchMoviesURL = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=';
+export const optionsHeaders = {
     headers: {
         'Content-type': 'application/json',
         'accept': 'application/json',
@@ -18,7 +16,6 @@ const optionsHeaders = {
 }
 
 export function Main() {
-    const insets = useSafeAreaInsets();
     const [moviesAPI, setMoviesAPI] = useState([])
     const [page, setPage] = useState(1);
 
@@ -56,35 +53,3 @@ export function Main() {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#000',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingTop: Constants.statusBarHeight,
-        padding: 8,
-    },
-    movieContainer: {
-        margin: 10,
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        backgroundColor: '#1c1c1c',
-        borderRadius: 10,
-        padding: 10,
-        width: 120,
-        height: 200,
-        shadowColor: '#000',
-    },
-    movieTitle: {
-        color: '#fff',
-        fontSize: 16,
-        marginBottom: 5,
-    },
-    movieImage: {
-        width: 100,
-        height: 150,
-    },
-});

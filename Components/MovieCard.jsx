@@ -4,20 +4,19 @@ import { Link } from 'expo-router';
 import { styled } from 'nativewind';
 
 const StyledPressable = styled(Pressable);
-
-export function MovieCard({ movie }) {
-    const getColor = (vote) => {
-        if (vote >= 7) {
-            return '#00FF00'; // Green
-        } else if (vote >= 5) {
-            return '#FFFF00'; // Yellow
-        } else {
-            return '#FF0000'; // Red
-        }
+export const getColor = (vote) => {
+    if (vote >= 7) {
+        return '#00FF00'; // Green
+    } else if (vote >= 5) {
+        return '#FFFF00'; // Yellow
+    } else {
+        return '#FF0000'; // Red
     }
+}
+export function MovieCard({ movie }) {
     const color = getColor(movie.vote_average);
     return (
-        <Link href={`/${movie.id}`} asChild>
+        <Link href={`/${movie.title}`} asChild>
             <StyledPressable style={styles.stylePresable}>
                 <View
                     className="flex-row bg-slate-500/100 rounded-lg p-2 w-28 h-52 shadow-lg"
