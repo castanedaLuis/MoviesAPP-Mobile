@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "metacritic-app",
-    "slug": "metacritic-app",
+    "name": "mobiesAPI-app",
+    "slug": "mobiesAPI-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,6 +10,7 @@
     "extra":{
       "token":"eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMGFkNjNlOTM1YmRkMThiOTg3ZTZkOGM3ZGZhZjlhMiIsIm5iZiI6MTYzNjY5MzU4NS42NzUsInN1YiI6IjYxOGRmNjUxMjBlNmE1MDA5MThkNjgyMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.P1e1hip1zJOZilusm2V7bus4ZEndVPaA4U40UCFEXMU"
     },
+    "scheme": "mobiesAPI-app",
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",

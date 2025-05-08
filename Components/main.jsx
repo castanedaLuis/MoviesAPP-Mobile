@@ -1,12 +1,14 @@
 import Constants from 'expo-constants';
-import { StyleSheet, Text, View, Image, FlatList, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, FlatList, ActivityIndicator, Pressable } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useEffect, useState } from 'react';
 import { fetchingData } from '../lib/movies'
 import { AmimatedCardMovie } from './MovieCard';
+import { Link } from 'expo-router';
+import { InfoIcon } from './Icons';
 
 const urlMovies = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&page=';
-const searchMovies = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=';
+//const searchMovies = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1&query=';
 const optionsHeaders = {
     headers: {
         'Content-type': 'application/json',
@@ -35,6 +37,11 @@ export function Main() {
     return (
         <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
             <Text style={{ color: '#fff', fontSize: 24, marginBottom: 20 }}>Popular Movies</Text>
+            <Link href="/about" >
+                <Pressable>
+                    <InfoIcon color='white' size={24} />
+                </Pressable>
+            </Link>
             {
                 moviesAPI.length === 0 ? (
                     <ActivityIndicator size="large" color="#fff" />
